@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:  
+  tborgesvieira_nginx:
+    image: nginx
+    volumes:
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+    ports:
+      - 8081:80
+    networks:
+      - tborgesvieira
+  
+  localhost1:
+    build: .
+    environment:
+      - APP_NAME=localhost1    
+    networks:
+      - tborgesvieira
+  
+  localhost2:
+    build: .
+    environment:
+      - APP_NAME=localhost2
+    networks:
+      - tborgesvieira  
+      
+networks:
+  tborgesvieira:
+    driver: bridge
