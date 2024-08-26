@@ -1,6 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using poc_dotnet_nginx.Models;
-using System.Diagnostics;
 
 namespace poc_dotnet_nginx.Controllers
 {
@@ -19,6 +17,7 @@ namespace poc_dotnet_nginx.Controllers
         {
             ViewData["APP_NAME"] = _configuration.GetValue<string>("APP_NAME");
             ViewData["HOST_NAME"] = Request.Host.Value;
+            ViewData["MACHINE_NAME"] = Environment.MachineName;          
 
             return View();
         }
